@@ -3,7 +3,6 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/eahowell/pokedex-js-app)
 ![GitHub forks](https://img.shields.io/github/forks/eahowell/pokedex-js-app)
 ![GitHub watchers](https://img.shields.io/github/watchers/eahowell/pokedex-js-app)
-![GitHub pulls](https://img.shields.io/github/pulls/eahowell/pokedex-js-app)
 
 ## Project Description
 - To build a small web application with HTML, CSS, and JavaScript that loads data from an external API and enables the viewing of data points in detail.
