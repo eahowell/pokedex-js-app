@@ -5,10 +5,11 @@ pokemonList = [
   { name: "Venusaur", height: 2, types: ["grass", "poison"] },
 ];
 console.log(pokemonList);
+document.write
 for (let i = 0; i < pokemonList.length; i++) {
-    document.write(`
+  document.write(`
     ${pokemonList[i].name}  
-    ${pokemonList[i].height}  
-    ${pokemonList[i].types} 
-    ----`);
-  }
+    (Height: ${pokemonList[i].height}   
+     and Type: ${pokemonList[i].types})`);
+  document.write('<br>');
+};
