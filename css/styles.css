@@ -29,7 +29,7 @@ body {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.1;
 }
 
 h1 {
@@ -68,4 +68,21 @@ a:hover,
 a:focus {
   /* Remove underline when hovering and outline link */
   text-decoration: none;
+}
+.tablePokemonList {
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  margin: 15px auto 15px auto;
+  text-align: center;
+}
+.tablePokemonList th {
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  background-color: var(--LightBlue);
+  padding: 15px;
+}
+.tablePokemonList td {
+  padding: 10px;
+  border-top: 1px solid grey;
+  border-inline: 1px solid grey;
 }
