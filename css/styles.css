@@ -1,71 +1,71 @@
 :root {
-    --DarkBlue: #0a1464;
-    --MidBlue: #1d2983;
-    --LightBlue: #a9bbe4;
-    --HotPink: #e928bd;
-    --Peach: #ef88aa;
-    --OpacquePeach: #ef88aa80;
-    --LightPurple: #f6e6ff;
-    --Sun-Full: #f76414;
-    --Sun-Mid: #fcffad;
-    --Sun-Lite: #edc655;
-    --HeaderWeight: 700;
-  }
+  --DarkBlue: #0a1464;
+  --MidBlue: #1d2983;
+  --LightBlue: #a9bbe4;
+  --HotPink: #e928bd;
+  --Peach: #ef88aa;
+  --OpacquePeach: #ef88aa80;
+  --LightPurple: #f6e6ff;
+  --Sun-Full: #f76414;
+  --Sun-Mid: #fcffad;
+  --Sun-Lite: #edc655;
+  --HeaderWeight: 700;
+}
 
 /* Credit this change to https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {
-    box-sizing: border-box;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  /* end of credit */
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: "Roboto Slab", serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.1;
-  }
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
-  h1 {
-    font-size: 30px;
-    font-weight: var(--HeaderWeight);
-    line-height: 1.5;
-    color: black;
-  }
+/* end of credit */
 
-  h2 {
-    font-size: 24px;
-    font-weight: var(--HeaderWeight);
-  }
-  
-  h3 {
-    font-size: 18px;
-    font-weight: var(--HeaderWeight);
-  }
-  
-  /* Link Stylings */
-  a {
-    color: black;
-  }
-  
-  a:visited {
-    /* Visited Link */
-    color: var(--MidBlue);
-  }
-  
-  a:active {
-    /* Selected Link */
-    color: var(--HotPink);
-  }
-  
-  a:hover,
-  a:focus {
-    /* Remove underline when hovering and outline link */
-    text-decoration: none;
-  }
+body {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: var(--HeaderWeight);
+  line-height: 1.5;
+  color: black;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: var(--HeaderWeight);
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: var(--HeaderWeight);
+}
+
+/* Link Stylings */
+a {
+  color: black;
+}
+
+a:visited {
+  /* Visited Link */
+  color: var(--MidBlue);
+}
+
+a:active {
+  /* Selected Link */
+  color: var(--HotPink);
+}
+
+a:hover,
+a:focus {
+  /* Remove underline when hovering and outline link */
+  text-decoration: none;
+}
