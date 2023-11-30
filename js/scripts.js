@@ -7,7 +7,6 @@ pokemonList = [
 ];
 console.log(pokemonList);
 
-
 // Set up table header
 document.write(`
     <table class=tablePokemonList>
@@ -22,7 +21,6 @@ document.write(`
     <tbody>
     `);
 
-
 // Loop through array to put the information in a table
 for (let i = 0; i < pokemonList.length; i++) {
   document.write(`<tr>
@@ -32,22 +30,37 @@ for (let i = 0; i < pokemonList.length; i++) {
         <td>
         `);
 
-// Determine the size classification based on the height
-    if (pokemonList[i].height < 1) {
-        document.write("Tiny");
-    } else if (pokemonList[i].height >= 1 && pokemonList[i].height <= 1.9) {
-        document.write("Medium");
-    } else if (pokemonList[i].height > 1.9) {
-        document.write("Large");
-    } else {
-        document.write("Unclassified");
-    }
+  // Determine the size classification based on the height
+  if (pokemonList[i].height < 1) {
+    document.write("Tiny");
+  } else if (pokemonList[i].height >= 1 && pokemonList[i].height <= 1.9) {
+    document.write("Medium");
+  } else if (pokemonList[i].height > 1.9) {
+    document.write("Large");
+  } else {
+    document.write("Unclassified");
+  }
 
-    document.write(`
+  document.write(`
             </td>  
         </tr>`);
 }
-    document.write(`
+document.write(`
         </tbody>
         </table>
+    `);
+
+// Footer with credits for the images used in the logo 
+document.write(`
+        <br>
+        <br>
+        <br>
+        <br>
+        <footer>
+            Credits:
+            <br>
+            <a href="https://www.flaticon.com/free-icons/pokeball_287221" title="Pokemon Logo Icon">Pokemon Icon (used in logo) created by Nikita Golubev - Flaticon</a>
+            <br>
+            <a href="https://www.flaticon.com/free-icons/pikachu_188987" title="Pikachu Logo Icno">Pikachu Icon (used in logo) created by Roundicons Freebies - Flaticon</a>
+        </footer>
     `);
