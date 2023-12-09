@@ -50,17 +50,4 @@ document.write(`
         </table>
     `);
 
-// Footer with credits for the images used in the logo 
-document.write(`
-        <br>
-        <br>
-        <br>
-        <br>
-        <footer>
-            Credits:
-            <br>
-            <a href="https://www.flaticon.com/free-icons/pokeball_287221" title="Pokemon Logo Icon">Pokemon Icon (used in logo) created by Nikita Golubev - Flaticon</a>
-            <br>
-            <a href="https://www.flaticon.com/free-icons/pikachu_188987" title="Pikachu Logo Icno">Pikachu Icon (used in logo) created by Roundicons Freebies - Flaticon</a>
-        </footer>
-    `);
+
