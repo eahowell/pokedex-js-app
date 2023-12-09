@@ -19,4 +19,7 @@
 ## API Used
 - This app uses [Poké API](https://pokeapi.co/)
 
+## Credits
+- [Pokemon Icon (used in logo) created by Nikita Golubev - Flaticon](https://www.flaticon.com/free-icons/pokeball_287221)
+- [Pikachu Icon (used in logo) created by Roundicons Freebies - Flaticon](https://www.flaticon.com/free-icons/pikachu_188987)
  
