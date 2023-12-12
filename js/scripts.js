@@ -22,20 +22,20 @@ document.write(`
     `);
 
 // Loop through array to put the information in a table
-for (let i = 0; i < pokemonList.length; i++) {
+pokemonList.forEach(function(pokemon) {
   document.write(`<tr>
-        <td>${pokemonList[i].name}</td>
-        <td>${pokemonList[i].height}</td>   
-        <td>${pokemonList[i].types}</td>
+        <td>${pokemon.name}</td>
+        <td>${pokemon.height}</td>   
+        <td>${pokemon.types}</td>
         <td>
         `);
 
   // Determine the size classification based on the height
-  if (pokemonList[i].height < 1) {
+  if (pokemon.height < 1) {
     document.write("Tiny");
-  } else if (pokemonList[i].height >= 1 && pokemonList[i].height <= 1.9) {
+  } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
     document.write("Medium");
-  } else if (pokemonList[i].height > 1.9) {
+  } else if (pokemon.height > 1.9) {
     document.write("Large");
   } else {
     document.write("Unclassified");
@@ -44,7 +44,7 @@ for (let i = 0; i < pokemonList.length; i++) {
   document.write(`
             </td>  
         </tr>`);
-}
+});
 document.write(`
         </tbody>
         </table>
