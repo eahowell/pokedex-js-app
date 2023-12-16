@@ -8,18 +8,6 @@ let pokemonRepository = (function () {
   ];
   let keysPokemonList = ["name", "height", "types"];
 
-  // Compare two arrays
-  function compareArrays(array1, array2) {
-    if (
-      array1.length === array2.length &&
-      array1.every((element, index) => element === array2[index])
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   function add(pokemon) {
     // Verify the pokemon being passed is an object
     if (typeof pokemon === "object") {
@@ -92,3 +80,37 @@ document.write(`
           </tbody>
           </table>
       `);
+
+// Compare two arrays
+function compareArrays(array1, array2) {
+  if (
+    array1.length === array2.length &&
+    array1.every((element, index) => element === array2[index])
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Filter list by dropdown
+document.write(`
+<form id="formFilterPokemon action="#">
+<label for="filterPokemon">Pokemon Filter</label>
+<select name="pokemonsFilterList" id="pokemonsFilterList">
+<option value="All">All</option>
+`)
+pokemonRepository.getAll().forEach(function(pokemon) {
+  document.write(`<option value="
+    ${pokemon.name}
+    ">
+    ${pokemon.name}
+    </option>
+    `
+  )
+    
+})
+document.write(`
+</select>
+<input type="submit" value="Submit" />
+</form>`)
