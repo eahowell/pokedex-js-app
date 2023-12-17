@@ -21,7 +21,8 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <title>Pokédex | JS App</title>
   </head>
-  <body>
+  <body onload = "setChoice()">
+    
     <header>
       <img id="HeaderLogoImage" src="img/PokedexLogo.png"
                 alt="Logo for the Pokedex" class="page-header__item" />
@@ -29,10 +30,29 @@
 
     <main></main>
 
-    
+    <div id="filterPokemon">
+      <label for="filterPokemon">Pokemon Filter:</label>
+      <select name="pokemonsChoice" id="pokemonsChoice" class = "form-select" onchange="setChoice()">
+      <option value = "All" selected>All</option>
+      </select>
+      </div>
 
     <script src="js/scripts.js"></script>
     <script src="js/tota11y.min.js"></script>
+
+    <!-- Removed this and moved it back to js until I can figure out the filter -->
+    <!-- <table class="tablePokemonList" id="tablePokemonList">
+      <thead>
+          <tr>
+              <th> Name </th>
+              <th> Height (m) </th>
+              <th> Type </th>
+              <th> Size </th>
+          </tr>
+      </thead>
+      <tbody id="tablePokemonListBody">
+      </tbody>
+    </table> -->
   </body>
   <!-- CREDITS -->
   <!--"Title" by [Artist's Name], App. License: [License Type]. Available at: [URL]-->
