@@ -133,3 +133,9 @@ select {
   margin-top: 10px;
   padding: 10px 5px;
 }
+.form-select{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  }
