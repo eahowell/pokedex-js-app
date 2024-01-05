@@ -49,7 +49,7 @@ function compareArrays(array1, array2) {
   } else {
     return false;
   }
-}
+};
 
 // Populate dropdown
 pokemonRepository.getAll().forEach(function (pokemon) {
@@ -58,13 +58,6 @@ pokemonRepository.getAll().forEach(function (pokemon) {
   optionsPokemon.text = pokemon.name;
   pokemonsChoice.add(optionsPokemon);
 });
-
-function setChoice() {
-  let choice = document.getElementById("pokemonsChoice").value;
-  choice.value = this.name;
-  choice.innerText = this.name;
-  console.log(choice);
-}
 
 // Set up table header
 document.write(`
@@ -79,97 +72,90 @@ document.write(`
       </thead>
       <tbody id="tablePokemonListBody">
       `);
-
-// Loop through array to put the information in a table
-pokemonRepository.getAll().forEach(function (pokemon) {
-  document.write(`<tr>
+      // Loop through array to put the information in a table
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    document.write(`<tr>
           <td>${pokemon.name}</td>
           <td>${pokemon.height}</td>   
           <td>${pokemon.types}</td>
           <td>
           `);
 
-  // Determine the size classification based on the height
-  if (pokemon.height < 1) {
-    document.write("Tiny");
-  } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
-    document.write("Medium");
-  } else if (pokemon.height > 1.9) {
-    document.write("Large");
-  } else {
-    document.write("Unclassified");
-  }
-  document.write(`
+    // Determine the size classification based on the height
+    if (pokemon.height < 1) {
+      document.write("Tiny");
+    } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
+      document.write("Medium");
+    } else if (pokemon.height > 1.9) {
+      document.write("Large");
+    } else {
+      document.write("Unclassified");
+    }
+    document.write(`
               </td>  
           </tr>`);
-});
+  });
+
+var choice = "All";
+function setChoice() {
+  choice = document.getElementById("pokemonsChoice").value;
+  console.log(choice);
+  console.log(choice);
+
+if (
+  choice === "All"
+) {
+  // Loop through array to put the information in a table
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    document.write(`<tr>
+          <td>${pokemon.name}</td>
+          <td>${pokemon.height}</td>   
+          <td>${pokemon.types}</td>
+          <td>
+          `);
+
+    // Determine the size classification based on the height
+    if (pokemon.height < 1) {
+      document.write("Tiny");
+    } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
+      document.write("Medium");
+    } else if (pokemon.height > 1.9) {
+      document.write("Large");
+    } else {
+      document.write("Unclassified");
+    }
+    document.write(`
+              </td>  
+          </tr>`);
+  });
+} else {
+  let filteredRepository = pokemonRepository.getAll().filter((pokemon) => pokemon.name === choice );
+  // console.log(filteredRepository)
+  
+  filteredRepository.forEach(function (fpokemon) {
+    document.write(`<tr>
+                        <td>${fpokemon.name}</td>
+                        <td>${fpokemon.height}</td>   
+                        <td>${fpokemon.types}</td>
+                        <td>
+                        `);
+
+    // Determine the size classification based on the height
+    if (fpokemon.height < 1) {
+      document.write("Tiny");
+    } else if (fpokemon.height >= 1 && fpokemon.height <= 1.9) {
+      document.write("Medium");
+    } else if (fpokemon.height > 1.9) {
+      document.write("Large");
+    } else {
+      document.write("Unclassified");
+    }
+    document.write(`
+                            </td>  
+                        </tr>`);
+  });
+}}
 document.write(`
           </tbody>
           </table>
       `);
-
-// This below was my initial attempt at a few different ways to try to filter the table.
-// function setChoice () {
-//   let choice = document.getElementById("pokemonsChoice").value
-//   choice.value = this.name
-//   choice.innerText  = this.name
-
-//   // let table = document.getElementById("tablePokemonList");
-//   // Get the table body element in which you want to add row
-//   let table = document.getElementById("tablePokemonListBody");
-
-//   // Create row element
-//   let row = document.createElement("tr");
-
-//   console.log(choice)
-//   if (
-//     choice.innerText === "All"
-//     ) {
-
-//       // Loop through array to put the information in a table
-//     pokemonRepository.getAll().forEach(function (pokemon) {
-//       // let row = table.insertRow(-1);
-//       let c1 = document.createElement("td");
-//       let c2 = document.createElement("td");
-//       let c3 = document.createElement("td");
-//       let c4 = document.createElement("td");
-
-//       c1.innerText = pokemon.name;
-//       c2.innerText = pokemon.height;
-//       c3.innerText = pokemon.types;
-//       row.appendChild(c1);
-//       row.appendChild(c2);
-//       row.appendChild(c3);
-//       row.appendChild(c4);
-//       // Append row to table body
-//       table.appendChild(row)
-//       // determineSize(pokemon, c4);
-//   })
-// } else {
-//   let filteredRepository = pokemonRepository.getAll().filter((pokemon) => pokemon.name = choice.name)
-//     // let row = table.insertRow(-1);
-//     let c1 = row.insertCell(0);
-//     let c2 = row.insertCell(1);
-//     let c3 = row.insertCell(2);
-//     let c4 = row.insertCell(3);
-
-//     c1.innerText = filteredRepository[0];
-//     c2.innerText = filteredRepository[1];
-//     c3.innerText = filteredRepository[2];
-//     // determineSize(pokemon, c4);
-//   }
-
-// };
-//   // Determine the size classification based on the height
-//   function determineSize (pokemon, c) {
-
-//   if (pokemon.height < 1) {
-//       c4.innerText = "Tiny";
-//   } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
-//     c4.innerText = "Medium";
-//   } else if (pokemon.height > 1.9) {
-//     c4.innerText = "Large";
-//   } else {
-//     c4.innerText ="Unclassified";
-//   }
-// }
