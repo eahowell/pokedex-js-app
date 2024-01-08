@@ -6,23 +6,20 @@ let pokemonRepository = (function () {
     { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"] },
     { name: "Ivysaur", height: 1, types: ["grass", "poison"] },
     { name: "Venusaur", height: 2, types: ["grass", "poison"] },
+    { name: "Charmander", height: 0.6, types: ["fire"] },
   ];
   let keysPokemonList = ["name", "height", "types"];
 
   function add(pokemon) {
     // Verify the pokemon being passed is an object
-    if (typeof pokemon === "object") {
-      let keyCheck = Object.keys(pokemon);
-      // Verify the pokemon being passed the keys matched the required keys
-      if (compareArrays(keyCheck, keysPokemonList)) {
-        pokemonList.push(pokemon);
-      } else {
-        alert(
-          "Keys did not match the Pokemon being added, please make sure you follow the proper formoat ['name', 'height', 'types']"
-        );
-      }
+    // Verify the pokemon being passed the keys matched the required keys
+    if (
+      typeof pokemon === "object" &&
+      compareArrays(Object.keys(pokemon), keysPokemonList)
+    ) {
+      pokemonList.push(pokemon);
     } else {
-      alert("Item being added is not an object.");
+      alert("Invalid pokemon object.");
     }
   }
 
@@ -35,127 +32,73 @@ let pokemonRepository = (function () {
   };
 })();
 
-// Add a pokemon to the repository
-// console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: "Charmander", height: 0.6, types: ["fire"] });
-
 // Compare two arrays
 function compareArrays(array1, array2) {
-  if (
+  return (
     array1.length === array2.length &&
     array1.every((element, index) => element === array2[index])
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
+  );
+}
+
+// Classify Size
+function getSizeClassification(height) {
+  if (height < 1) return "Tiny";
+  else if (height >= 1 && height <= 1.9) return "Medium";
+  else if (height > 1.9) return "Large";
+  return "Unclassified";
+}
 
 // Populate dropdown
-pokemonRepository.getAll().forEach(function (pokemon) {
-  var optionsPokemon = document.createElement("option");
-  optionsPokemon.value = pokemon.name;
-  optionsPokemon.text = pokemon.name;
-  pokemonsChoice.add(optionsPokemon);
+document.addEventListener("DOMContentLoaded", function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    var optionsPokemon = document.createElement("option");
+    optionsPokemon.value = pokemon.name;
+    optionsPokemon.text = pokemon.name;
+    document.getElementById("pokemonsChoice").appendChild(optionsPokemon);
+  });
+
+  // Set up table header
+  var table = document.createElement("table");
+  table.className = "tablePokemonList";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th> Name </th>
+        <th> Height (m) </th>
+        <th> Type </th>
+        <th> Size </th>
+      </tr>
+    </thead>
+    <tbody id="tablePokemonListBody">
+    </tbody>`;
+  document.body.appendChild(table);
+
+  function updateTable() {
+    let choice = document.getElementById("pokemonsChoice").value;
+    let tableBody = document.getElementById("tablePokemonListBody");
+    tableBody.innerHTML = "";
+
+    let pokemonsToShow =
+      choice === "All"
+        ? pokemonRepository.getAll()
+        : pokemonRepository
+            .getAll()
+            .filter((pokemon) => pokemon.name === choice);
+
+    // Loop through array to put the information in a table
+    pokemonsToShow.forEach(function (pokemon) {
+      let row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${pokemon.name}</td>
+        <td>${pokemon.height}</td>
+        <td>${pokemon.types.join(", ")}</td>
+        <td>${getSizeClassification(pokemon.height)}</td>`;
+      tableBody.appendChild(row);
+    });
+  }
+
+  document
+    .getElementById("pokemonsChoice")
+    .addEventListener("change", updateTable);
+  updateTable();
 });
-
-// Set up table header
-document.write(`
-      <table class="tablePokemonList" id="tablePokemonList">
-      <thead>
-          <tr>
-              <th> Name </th>
-              <th> Height (m) </th>
-              <th> Type </th>
-              <th> Size </th>
-          </tr>
-      </thead>
-      <tbody id="tablePokemonListBody">
-      `);
-      // Loop through array to put the information in a table
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    document.write(`<tr>
-          <td>${pokemon.name}</td>
-          <td>${pokemon.height}</td>   
-          <td>${pokemon.types}</td>
-          <td>
-          `);
-
-    // Determine the size classification based on the height
-    if (pokemon.height < 1) {
-      document.write("Tiny");
-    } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
-      document.write("Medium");
-    } else if (pokemon.height > 1.9) {
-      document.write("Large");
-    } else {
-      document.write("Unclassified");
-    }
-    document.write(`
-              </td>  
-          </tr>`);
-  });
-
-var choice = "All";
-function setChoice() {
-  choice = document.getElementById("pokemonsChoice").value;
-  console.log(choice);
-  console.log(choice);
-
-if (
-  choice === "All"
-) {
-  // Loop through array to put the information in a table
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    document.write(`<tr>
-          <td>${pokemon.name}</td>
-          <td>${pokemon.height}</td>   
-          <td>${pokemon.types}</td>
-          <td>
-          `);
-
-    // Determine the size classification based on the height
-    if (pokemon.height < 1) {
-      document.write("Tiny");
-    } else if (pokemon.height >= 1 && pokemon.height <= 1.9) {
-      document.write("Medium");
-    } else if (pokemon.height > 1.9) {
-      document.write("Large");
-    } else {
-      document.write("Unclassified");
-    }
-    document.write(`
-              </td>  
-          </tr>`);
-  });
-} else {
-  let filteredRepository = pokemonRepository.getAll().filter((pokemon) => pokemon.name === choice );
-  // console.log(filteredRepository)
-  
-  filteredRepository.forEach(function (fpokemon) {
-    document.write(`<tr>
-                        <td>${fpokemon.name}</td>
-                        <td>${fpokemon.height}</td>   
-                        <td>${fpokemon.types}</td>
-                        <td>
-                        `);
-
-    // Determine the size classification based on the height
-    if (fpokemon.height < 1) {
-      document.write("Tiny");
-    } else if (fpokemon.height >= 1 && fpokemon.height <= 1.9) {
-      document.write("Medium");
-    } else if (fpokemon.height > 1.9) {
-      document.write("Large");
-    } else {
-      document.write("Unclassified");
-    }
-    document.write(`
-                            </td>  
-                        </tr>`);
-  });
-}}
-document.write(`
-          </tbody>
-          </table>
-      `);
