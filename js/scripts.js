@@ -26,9 +26,33 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
+
+  function addListItem(pokemon, tableBody) {
+      let pokemonULList = document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li');
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('pokemonTableButton');
+      listItem.appendChild(button);
+      pokemonULList.appendChild(listItem);
+
+      let row = document.createElement("tr");
+      row.innerHTML = `
+        <td class ="nameValue">${pokemon.name}</td>
+        <td class ="heightValue">${pokemon.height}</td>
+        <td class ="typeValue">${pokemon.types.join(", ")}</td>
+        <td class ="classificationValue">${getSizeClassification(pokemon.height)}</td>`;
+        
+        tableBody.appendChild(row);
+        
+
+      return addListItem
+  }
+
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem
   };
 })();
 
@@ -76,7 +100,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateTable() {
     let choice = document.getElementById("pokemonsChoice").value;
     let tableBody = document.getElementById("tablePokemonListBody");
+    let pokemonULList = document.querySelector('.pokemon-list');
+    // Clear table before refresh
     tableBody.innerHTML = "";
+    // Clear list before refresh
+    while(pokemonULList.firstChild ){
+      pokemonULList.removeChild( pokemonULList.firstChild );
+    }
 
     let pokemonsToShow =
       choice === "All"
@@ -87,13 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Loop through array to put the information in a table
     pokemonsToShow.forEach(function (pokemon) {
-      let row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${pokemon.name}</td>
-        <td>${pokemon.height}</td>
-        <td>${pokemon.types.join(", ")}</td>
-        <td>${getSizeClassification(pokemon.height)}</td>`;
-      tableBody.appendChild(row);
+        pokemonRepository.addListItem(pokemon, tableBody)
+      
+      
     });
   }
 
