@@ -32,21 +32,19 @@ let pokemonRepository = (function () {
       let listItem = document.createElement('li');
       let button = document.createElement('button');
       button.innerText = pokemon.name;
-      button.classList.add('pokemonTableButton');
+      button.classList.add('pokemonListButton');
+      button.addEventListener('click', function(){
+        showDetails(pokemon)
+      })
+      listItem.classList.add('listItem');
       listItem.appendChild(button);
       pokemonULList.appendChild(listItem);
-
-      let row = document.createElement("tr");
-      row.innerHTML = `
-        <td class ="nameValue">${pokemon.name}</td>
-        <td class ="heightValue">${pokemon.height}</td>
-        <td class ="typeValue">${pokemon.types.join(", ")}</td>
-        <td class ="classificationValue">${getSizeClassification(pokemon.height)}</td>`;
-        
-        tableBody.appendChild(row);
-        
-
+      
       return addListItem
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon)
   }
 
   return {
@@ -81,28 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("pokemonsChoice").appendChild(optionsPokemon);
   });
 
-  // Set up table header
-  var table = document.createElement("table");
-  table.className = "tablePokemonList";
-  table.innerHTML = `
-    <thead>
-      <tr>
-        <th> Name </th>
-        <th> Height (m) </th>
-        <th> Type </th>
-        <th> Size </th>
-      </tr>
-    </thead>
-    <tbody id="tablePokemonListBody">
-    </tbody>`;
-  document.body.appendChild(table);
-
   function updateTable() {
     let choice = document.getElementById("pokemonsChoice").value;
-    let tableBody = document.getElementById("tablePokemonListBody");
     let pokemonULList = document.querySelector('.pokemon-list');
-    // Clear table before refresh
-    tableBody.innerHTML = "";
     // Clear list before refresh
     while(pokemonULList.firstChild ){
       pokemonULList.removeChild( pokemonULList.firstChild );
@@ -117,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Loop through array to put the information in a table
     pokemonsToShow.forEach(function (pokemon) {
-        pokemonRepository.addListItem(pokemon, tableBody)
+    pokemonRepository.addListItem(pokemon)
       
       
     });
