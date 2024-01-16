@@ -9,6 +9,8 @@
   --Sun-Full: #f76414;
   --Sun-Mid: #fcffad;
   --Sun-Lite: #edc655;
+  --Pokemon-Red: #ED5564;
+  --OpaquePokemon-Red: #ed55644f;
   --HeaderWeight: 700;
 }
 
@@ -103,8 +105,7 @@ a:focus {
 
 .tablePokemonList td {
   padding: 10px;
-  border-top: 1px solid grey;
-  border-inline: 1px solid grey;
+  border: 1px solid grey;
 }
 
 footer {
@@ -139,4 +140,29 @@ select {
   justify-content: center;
   margin: 10px auto;
   }
+ 
   
+ .pokemon-list {
+  border: 3px solid grey;
+  margin: 35px auto 5px auto;
+  padding: 5pt;
+  width: 275px;
+  align-items: center;
+  justify-content: center;
+  }
+.pokemonListButton {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  border: 1px solid grey;
+  margin: 5px auto 5px 5px;
+  padding: 5pt;
+  width: 250px;
+  background-color: var(--OpaquePokemon-Red);
+  border-radius: 3pt;
+  justify-items: left;
+}
+
+.listItem {
+  list-style-type:none;
+}
