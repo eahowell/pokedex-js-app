@@ -21,29 +21,33 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <title>Pokédex | JS App</title>
   </head>
-    <body>
+  <body>
     <header>
-      <img id="HeaderLogoImage" src="img/PokedexLogo.png"
-                alt="Logo for the Pokedex" class="page-header__item" />
+      <img
+        id="HeaderLogoImage"
+        src="img/PokedexLogo.png"
+        alt="Logo for the Pokedex"
+        class="page-header__item"
+      />
     </header>
 
     <main></main>
 
     <div id="filterPokemon">
       <label for="filterPokemon">Pokemon Filter:</label>
-      <select name="pokemonsChoice" id="pokemonsChoice" class = "form-select">
-      <option value = "All" selected>All</option>
+      <select name="pokemonsChoice" id="pokemonsChoice" class="form-select">
+        <option value="All" selected>All</option>
       </select>
-      </div>
+    </div>
 
-      <ul class="pokemon-list">
+    <ul class="pokemon-list"></ul>
 
-      </ul>
-      <script src="js/promise-polyfill.js"></script>
-      <script src="js/fetch-polyfill.js"></script>
-      <script src="js/scripts.js"></script>
-      <script src="js/tota11y.min.js"></script>
+    <div id="loader"></div>
 
+    <script src="js/promise-polyfill.js"></script>
+    <script src="js/fetch-polyfill.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/tota11y.min.js"></script>
   </body>
   <!-- CREDITS -->
   <!--"Title" by [Artist's Name], App. License: [License Type]. Available at: [URL]-->

@@ -134,22 +134,24 @@ select {
   margin-top: 10px;
   padding: 10px 5px;
 }
-.form-select{
+
+.form-select {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px auto;
-  }
- 
-  
- .pokemon-list {
+}
+
+
+.pokemon-list {
   border: 3px solid grey;
   margin: 35px auto 5px auto;
   padding: 5pt;
   width: 275px;
   align-items: center;
   justify-content: center;
-  }
+}
+
 .pokemonListButton {
   display: grid;
   grid-template-columns: 1fr;
@@ -164,5 +166,31 @@ select {
 }
 
 .listItem {
-  list-style-type:none;
+  list-style-type: none;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

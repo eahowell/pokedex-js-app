@@ -12,7 +12,7 @@ let pokemonRepository = (function () {
       typeof pokemon === "object" &&
       compareArrays(Object.keys(pokemon), keysPokemonList)
     ) {
-    pokemonList.push(pokemon);
+      pokemonList.push(pokemon);
     } else {
       console.log("Invalid pokemon object.", pokemon);
     }
@@ -20,6 +20,14 @@ let pokemonRepository = (function () {
 
   function getAll() {
     return pokemonList;
+  }
+
+  // Loading messages
+  function showLoadingMessage() {
+    document.getElementById("loader").style.display = "block";
+  }
+  function hideLoadingMessage() {
+    document.getElementById("loader").style.display = "none";
   }
 
   function addListItem(pokemon, tableBody) {
@@ -39,12 +47,14 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon) {
+    showLoadingMessage();
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
     });
   }
 
   function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl)
       .then(function (response) {
         return response.json();
@@ -56,14 +66,17 @@ let pokemonRepository = (function () {
             detailsUrl: item.url,
           };
           add(pokemon);
+          hideLoadingMessage();
         });
       })
       .catch(function (e) {
         console.error(e);
+        hideLoadingMessage();
       });
   }
 
   function loadDetails(item) {
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
@@ -74,9 +87,11 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        hideLoadingMessage();
       })
       .catch(function (e) {
         console.error(e);
+        hideLoadingMessage();
       });
   }
 
@@ -86,6 +101,8 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
+    showLoadingMessage: showLoadingMessage,
+    hideLoadingMessage: hideLoadingMessage,
   };
 })();
 
@@ -98,6 +115,7 @@ pokemonRepository.loadList().then(function () {
     optionsPokemon.value = pokemon.name;
     optionsPokemon.text = pokemon.name;
     document.getElementById("pokemonsChoice").appendChild(optionsPokemon);
+    pokemonRepository.hideLoadingMessage();
   });
 });
 
@@ -120,6 +138,7 @@ function getSizeClassification(height) {
 // Populate dropdown
 document.addEventListener("DOMContentLoaded", function () {
   function updateTable() {
+    pokemonRepository.showLoadingMessage();
     let choice = document.getElementById("pokemonsChoice").value;
     let pokemonULList = document.querySelector(".pokemon-list");
     // Clear list before refresh
@@ -138,10 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
     pokemonsToShow.forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
+    pokemonRepository.hideLoadingMessage();
   }
-
-  // Loading messages
-  
 
   document
     .getElementById("pokemonsChoice")
