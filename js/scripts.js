@@ -49,7 +49,6 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     showLoadingMessage();
     loadDetails(pokemon).then(function () {
-      console.log(pokemon);
       showModal(pokemon.name, pokemon);
     });
   }
@@ -117,7 +116,6 @@ let pokemonRepository = (function () {
     // Height Element
     let heightElement = document.createElement("p");
     heightElement.innerText = "Height (decimeters): " + pokemon.height;
-    // heightElement.classList.add("modal-details")
 
     // Types Element
     let typesElement = document.createElement("p");
@@ -127,30 +125,29 @@ let pokemonRepository = (function () {
       typesToString = typesToString + " " + details.type.name;
     });
     typesElement.innerText = "Types: " + typesToString;
-    // typesElement.classList.add("modal-details")
 
     // Classification Element
     let classificationElement = document.createElement("p");
-    classificationElement.innerText = "Classification: " + getSizeClassification(pokemon.height);
-    // classificationElement.classList.add("modal-details")
+    classificationElement.innerText =
+      "Classification: " + getSizeClassification(pokemon.height);
 
-    // Image 
+    // Image
     let imageElement = new Image();
-    imageElement.classList.add("modal-image")
-    imageElement.src=pokemon.imageUrl
+    imageElement.classList.add("modal-image");
+    imageElement.src = pokemon.imageUrl;
 
     // Create div for details
-    let detailsDiv = document.createElement("div")
-    detailsDiv.classList.add("modal-details")
+    let detailsDiv = document.createElement("div");
+    detailsDiv.classList.add("modal-details");
 
     //  Create div for the body
-    let bodyDiv = document.createElement("div")
-    bodyDiv.classList.add("modal-body")
+    let bodyDiv = document.createElement("div");
+    bodyDiv.classList.add("modal-body");
 
     //  Create div for the Header
-    let headerDiv = document.createElement("div")
-    headerDiv.classList.add("modal-header")
-    
+    let headerDiv = document.createElement("div");
+    headerDiv.classList.add("modal-header");
+
     // Append to modal container
     headerDiv.appendChild(closeButtonElement);
     headerDiv.appendChild(titleElement);
@@ -159,7 +156,7 @@ let pokemonRepository = (function () {
     detailsDiv.appendChild(classificationElement);
     bodyDiv.appendChild(detailsDiv);
     bodyDiv.appendChild(imageElement);
-    modal.appendChild(headerDiv)
+    modal.appendChild(headerDiv);
     modal.appendChild(bodyDiv);
     modalContainer.appendChild(modal);
     modalContainer.classList.add("is-visible");

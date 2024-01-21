@@ -133,6 +133,7 @@ select {
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 10px 5px;
+  text-transform: capitalize;
 }
 
 .form-select {
@@ -201,10 +202,10 @@ select {
   background: rgba(0, 0, 0, 0.5);
 
   /* to show it above other content */
-  z-index: 999; 
+  z-index: 999;
 
   /* to allow scrolling if the screen is not high enough*/
-  overflow: auto; 
+  overflow: auto;
 
   /* this is used to center the modal */
   display: grid;
@@ -218,7 +219,7 @@ select {
   background: #fff;
   padding: 15px;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   text-align: left;
   text-transform: capitalize;
 }
@@ -230,6 +231,7 @@ select {
 .modal-details {
   margin: 50px;
 }
+
 .modal-image {
   float: left;
   margin: auto auto auto 50px;
@@ -262,5 +264,17 @@ select {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* For smaller displays */
+@media all and (max-width: 430px) {
+  .modal-image {
+    margin: auto auto auto 10px;
+    scale: 100%;
+  }
+
+  .modal-details {
+    margin: 10px;
   }
 }
