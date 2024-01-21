@@ -135,6 +135,8 @@ let pokemonRepository = (function () {
     let imageElement = new Image();
     imageElement.classList.add("modal-image");
     imageElement.src = pokemon.imageUrl;
+    imageElement.alt = "Picture of the Pokémon " + pokemon.name;
+    imageElement.title = "Picture of the Pokémon " + pokemon.name;
 
     // Create div for details
     let detailsDiv = document.createElement("div");
