@@ -12,9 +12,19 @@
 - Download the repo files and open the index.html
 
 ## Project Dependencies
-- JavaScript version: 1.5
+- [JavaScript Core version: 3.3.1](https://code.jquery.com/jquery-3.3.1.min.js)
+- [Popper.js](https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js)
+- [Bootstrap](https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js)
+-- [CSS](https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css)
+-- [Bootstrap Documentation](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+- [Roboto Slab Font](https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;900&display=swap)
+- Polyfills
+-- [Promise](js/promise-polyfill.js)
+-- [Fetch](js/fetch-polyfill.js)
 - Formatted via `Prettier`
 - The app will work in `Chrome`, `Firefox`, `Safari`, `Edge`, and `Internet Explorer 11`.
+
+
 
 
 ## API Used
