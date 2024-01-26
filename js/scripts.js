@@ -134,6 +134,7 @@ let pokemonRepository = (function () {
     // Image
     let imageElement = new Image();
     imageElement.classList.add("modal-image");
+    imageElement.classList.add("img-fluid");
     imageElement.src = pokemon.imageUrl;
     imageElement.alt = "Picture of the Pokémon " + pokemon.name;
     imageElement.title = "Picture of the Pokémon " + pokemon.name;

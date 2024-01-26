@@ -224,9 +224,9 @@ select {
   text-transform: capitalize;
 }
 
-.modal-body {
+/* .modal-body {
   display: flex;
-}
+} */
 
 .modal-details {
   margin: 50px;
@@ -272,7 +272,7 @@ select {
 @media all and (max-width: 430px) {
   .modal-image {
     margin: auto auto auto 10px;
-    scale: 100%;
+    /* scale: 100%; */
   }
 
   .modal-details {
