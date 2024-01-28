@@ -82,14 +82,44 @@
     
     </header>
 
-    <main></main>
-    <div id="modal-container"></div>
-    <div id="filterPokemon">
-      <label for="filterPokemon">Pokémon Filter:</label>
-      <select name="pokemonsChoice" id="pokemonsChoice" class="form-select">
-        <option value="All" selected>All</option>
-      </select>
-    </div>
+    <main class="page-container">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="pokemonDetailsModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="pokemonDetailsModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="pokemonDetailsModalCenterTitle">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <ul class="pokemon-list"></ul>
 
