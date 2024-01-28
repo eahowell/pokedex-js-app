@@ -96,94 +96,56 @@ let pokemonRepository = (function () {
   }
   // Modals
   function showModal(title, pokemon) {
-    let modalContainer = document.getElementById("modal-container");
-    // Clear existing modal content
-    modalContainer.innerHTML = "";
-    // Create new modal element
-    let modal = document.createElement("div");
-    modal.classList.add("modal");
-    // Add the new modal content
-    // Close Button
-    let closeButtonElement = document.createElement("button");
-    closeButtonElement.classList.add("modal-close");
-    closeButtonElement.innerText = "Close";
-    closeButtonElement.addEventListener("click", hideModal);
+    let modalBody = $(".modal-body");
+    let modalTitle = $(".modal-title");
+    let modalHeader = $(".modal-header")
 
+    // Clear existing modal content
+    modalBody.empty();
+    modalTitle.empty();
+   
     // Title Element
-    let titleElement = document.createElement("h1");
-    titleElement.innerText = title;
+    let nameElement =  $("<h1>" + pokemon.name + "</h1>");
+    
 
     // Height Element
-    let heightElement = document.createElement("p");
-    heightElement.innerText = "Height (decimeters): " + pokemon.height;
+    let heightElement = $("<p>" + "Height (dm): " + pokemon.height + "</p>");
 
     // Types Element
-    let typesElement = document.createElement("p");
     let details = pokemon.types;
     let typesToString = "";
     details.forEach(function (details) {
-      typesToString = typesToString + " " + details.type.name;
+      typesToString = typesToString + " - " + details.type.name;
     });
-    typesElement.innerText = "Types: " + typesToString;
+    let typesElement = $("<p>" + "Types: " + typesToString + "</p>");
 
     // Classification Element
-    let classificationElement = document.createElement("p");
-    classificationElement.innerText =
-      "Classification: " + getSizeClassification(pokemon.height);
+    let classificationElement = $("<p>" + "Classification: " + getSizeClassification(pokemon.height) + "</p>");
 
-    // Image
-    let imageElement = new Image();
-    imageElement.classList.add("modal-image");
-    imageElement.classList.add("img-fluid");
-    imageElement.src = pokemon.imageUrl;
-    imageElement.alt = "Picture of the Pokémon " + pokemon.name;
-    imageElement.title = "Picture of the Pokémon " + pokemon.name;
-
-    // Create div for details
-    let detailsDiv = document.createElement("div");
-    detailsDiv.classList.add("modal-details");
-
-    //  Create div for the body
-    let bodyDiv = document.createElement("div");
-    bodyDiv.classList.add("modal-body");
-
-    //  Create div for the Header
-    let headerDiv = document.createElement("div");
-    headerDiv.classList.add("modal-header");
-
-    // Append to modal container
-    headerDiv.appendChild(closeButtonElement);
-    headerDiv.appendChild(titleElement);
-    detailsDiv.appendChild(heightElement);
-    detailsDiv.appendChild(typesElement);
-    detailsDiv.appendChild(classificationElement);
-    bodyDiv.appendChild(detailsDiv);
-    bodyDiv.appendChild(imageElement);
-    modal.appendChild(headerDiv);
-    modal.appendChild(bodyDiv);
-    modalContainer.appendChild(modal);
-    modalContainer.classList.add("is-visible");
-
-    modalContainer.addEventListener("click", (e) => {
-      // Since this is also triggered when clicking INSIDE the modal, we only want to close if the user clicks directly on the overlay
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
+  //  Abilities
+  let abilitydetails = pokemon.abilities;
+    let abilitiesToString = "";
+    abilitydetails.forEach(function (abilitiesdetails) {
+      abilitiesToString = abilitiesToString + " - " + abilitiesdetails.ability.name;
     });
-  }
+  let abilitiesElement  = $("<p>" + "Abilities: " + abilitiesToString + "</p>");
+   
+    // Image
+    let imageElement = $(`<img class = "modal-img img-fluid" style = "width: 50%">`);
+    imageElement.attr("src", pokemon.imageUrl);
+    imageElement.attr("alt", ("Picture of the Pokémon " + pokemon.name));
+    imageElement.attr("title", ("Picture of the Pokémon " + pokemon.name));
 
-  function hideModal() {
-    let modalContainer = document.getElementById("modal-container");
-    modalContainer.classList.remove("is-visible");
-  }
 
-  window.addEventListener("keydown", (e) => {
-    let modalContainer = document.querySelector("#modal-container");
-    if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-      hideModal();
-    }
-  });
+    // Append to modal body
+    modalTitle.append(nameElement);
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
+    modalBody.append(typesElement);
+    modalBody.append(classificationElement);
+    modalBody.append(abilitiesElement);
+    
+  }
 
   return {
     add: add,
@@ -219,10 +181,10 @@ function compareArrays(array1, array2) {
 
 // Classify Size
 function getSizeClassification(height) {
-  if (height < 10) return "Tiny";
-  else if (height >= 10 && height <= 19) return "Medium";
-  else if (height > 19) return "Large";
-  return "Unclassified";
+  if (height < 10) return "Tiny Size";
+  else if (height >= 10 && height <= 19) return "Medium Size";
+  else if (height > 19) return "Large Size";
+  return "Unclassified Size";
 }
 
 // Populate dropdown
