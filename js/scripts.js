@@ -86,6 +86,7 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        item.abilities = details.abilities
         hideLoadingMessage();
       })
       .catch(function (e) {
@@ -207,10 +208,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loop through array to put the information in a table
     pokemonsToShow.forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
-    });
+    })
+    
     pokemonRepository.hideLoadingMessage();
   }
-
+  
   document
     .getElementById("pokemonsChoice")
     .addEventListener("change", updateTable);
