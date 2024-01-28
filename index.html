@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS  -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
     <!-- Importing Roboto Slab Font -->
@@ -25,7 +25,7 @@
     <title>Pokédex | JS App</title>
   </head>
   <body>
-    <header>
+    <header class="fixed-top">
       <img
         id="HeaderLogoImage"
         src="img/PokedexLogo.png"
@@ -44,42 +44,56 @@
           />
           Top of List
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-          <a class="navbar-brand" href="https://pokeapi.co/api/v2/pokemon/?limit=771" target="_blank">
-          <img
-            src="img/pokeball.png"
-            width="25"
-            height="25"
-            class="d-inline-block align-top"
-            title="Pokémon API"
-            alt="Pokeball image that will take you to the Pokémon API"
-          />
-          Pokémon API
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-brand" href="https://pokeapi.co/docs/v2" target="_blank">
-          <img
-            src="img/pokeball.png"
-            width="25"
-            height="25"
-            class="d-inline-block align-top"
-            title="Pokémon API Documentation"
-            alt="Pokeball image that will take you to the Pokémon API Documentation"
-          />
-          Pokémon API Documentation
-        </a>
-      </li>
-      </ul>
-        
-      </div>
+              <a
+                class="navbar-brand"
+                href="https://pokeapi.co/api/v2/pokemon/?limit=771"
+                target="_blank"
+              >
+                <img
+                  src="img/pokeball.png"
+                  width="25"
+                  height="25"
+                  class="d-inline-block align-top"
+                  title="Pokémon API"
+                  alt="Pokeball image that will take you to the Pokémon API"
+                />
+                Pokémon API
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="navbar-brand"
+                href="https://pokeapi.co/docs/v2"
+                target="_blank"
+              >
+                <img
+                  src="img/pokeball.png"
+                  width="25"
+                  height="25"
+                  class="d-inline-block align-top"
+                  title="Pokémon API Documentation"
+                  alt="Pokeball image that will take you to the Pokémon API Documentation"
+                />
+                Pokémon API Documentation
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
-    
     </header>
 
     <main class="page-container">
@@ -121,10 +135,20 @@
         </div>
       </div>
 
-    <ul class="pokemon-list"></ul>
+      <div id="filterPokemon">
+        <label for="filterPokemon">Pokémon Filter:</label>
+        <select name="pokemonsChoice" id="pokemonsChoice" class="form-select">
+          <option value="All" selected>All</option>
+        </select>
+      </div>
 
-    <div id="loader"></div>
+      <div class="list-group pokemon-list"></div>
 
+      <div id="loader" class="invisible">
+        <span class="spinner-grow" role="status" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
+      </div>
+    </main>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
