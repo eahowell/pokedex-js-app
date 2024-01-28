@@ -2,7 +2,7 @@
 let pokemonRepository = (function () {
   // Create the array of Pokemons
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=771";
   let keysPokemonList = ["name", "detailsUrl"];
 
   function add(pokemon) {
@@ -24,25 +24,24 @@ let pokemonRepository = (function () {
 
   // Loading messages
   function showLoadingMessage() {
-    document.getElementById("loader").style.display = "block";
+    $("#loader").addClass("visible");
   }
   function hideLoadingMessage() {
-    document.getElementById("loader").style.display = "none";
+    $("#loader").addClass("invisible");;
   }
-
+  // let i = 0
   function addListItem(pokemon, tableBody) {
-    let pokemonULList = document.querySelector(".pokemon-list");
-    let listItem = document.createElement("li");
-    let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    button.classList.add("pokemonListButton");
-    button.addEventListener("click", () => {
+    // i = i +1
+    let pokemonULList = $(".pokemon-list");
+    let listItem = $("<li></li>");
+    let button = $(`<button type="button" class="btn pokemonListButton" data-toggle="modal" data-target="#pokemonDetailsModalCenter">` + pokemon.name + `</button>`);
+    listItem.addClass("list-group-item");
+    button.on("click", function(e) {
       showDetails(pokemon);
+      // console.log(pokemon)
     });
-    listItem.classList.add("listItem");
-    listItem.appendChild(button);
-    pokemonULList.appendChild(listItem);
-
+    listItem.append(button);
+    pokemonULList.append(listItem);
     return addListItem;
   }
 
