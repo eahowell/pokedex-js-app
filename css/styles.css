@@ -116,6 +116,12 @@ select {
 button {
   text-transform: capitalize;
 }
+
+.nav-item{
+  padding-left: 25px;
+  margin-left: 35px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
