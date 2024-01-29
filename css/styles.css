@@ -9,13 +9,13 @@
   --Sun-Full: #f76414;
   --Sun-Mid: #fcffad;
   --Sun-Lite: #edc655;
-  --Pokemon-Red: #ED5564;
+  --Pokemon-Red: #ed5564;
   --OpaquePokemon-Red: #ed55644f;
   --HeaderWeight: 700;
 }
 
 .page-container {
-  margin-top: 225px;  
+  margin-top: 225px;
 }
 
 body {
@@ -28,10 +28,12 @@ body {
 header {
   color: var(--HotPink);
   background: var(--DarkBlue);
-  background: linear-gradient(180deg,
-      var(--Sun-Lite) 0%,
-      var(--Sun-Mid) 50%,
-      white 100%);
+  background: linear-gradient(
+    180deg,
+    var(--Sun-Lite) 0%,
+    var(--Sun-Mid) 50%,
+    white 100%
+  );
 }
 
 #HeaderLogoImage {
@@ -40,7 +42,6 @@ header {
   padding: 0;
   justify-content: center;
 }
-
 
 .formFilterPokemon {
   display: flex;
@@ -73,7 +74,6 @@ select {
   width: 200px;
 }
 
-
 .pokemon-list {
   align-items: center;
 }
@@ -88,7 +88,6 @@ select {
   list-style-type: none;
 }
 
-
 .visible {
   visibility: visible;
 }
@@ -96,14 +95,11 @@ select {
   visibility: hidden;
 }
 
-
-
 .modal-image {
   float: left;
   margin: auto auto auto 50px;
   scale: 150%;
 }
-
 
 .modal h1 {
   text-transform: capitalize;
@@ -117,7 +113,7 @@ button {
   text-transform: capitalize;
 }
 
-.nav-item{
+.nav-item {
   padding-left: 25px;
   margin-left: 35px;
 }

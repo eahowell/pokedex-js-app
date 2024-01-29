@@ -27,16 +27,20 @@ let pokemonRepository = (function () {
     $("#loader").addClass("visible");
   }
   function hideLoadingMessage() {
-    $("#loader").addClass("invisible");;
+    $("#loader").addClass("invisible");
   }
   // let i = 0
   function addListItem(pokemon, tableBody) {
     // i = i +1
     let pokemonULList = $(".pokemon-list");
     let listItem = $("<li></li>");
-    let button = $(`<button type="button" class="btn pokemonListButton" data-toggle="modal" data-target="#pokemonDetailsModalCenter">` + pokemon.name + `</button>`);
+    let button = $(
+      `<button type="button" class="btn pokemonListButton" data-toggle="modal" data-target="#pokemonDetailsModalCenter">` +
+        pokemon.name +
+        `</button>`
+    );
     listItem.addClass("list-group-item");
-    button.on("click", function(e) {
+    button.on("click", function (e) {
       showDetails(pokemon);
       // console.log(pokemon)
     });
@@ -86,7 +90,7 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
-        item.abilities = details.abilities
+        item.abilities = details.abilities;
         hideLoadingMessage();
       })
       .catch(function (e) {
@@ -98,15 +102,14 @@ let pokemonRepository = (function () {
   function showModal(title, pokemon) {
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
-    let modalHeader = $(".modal-header")
+    let modalHeader = $(".modal-header");
 
     // Clear existing modal content
     modalBody.empty();
     modalTitle.empty();
-   
+
     // Title Element
-    let nameElement =  $("<h1>" + pokemon.name + "</h1>");
-    
+    let nameElement = $("<h1>" + pokemon.name + "</h1>");
 
     // Height Element
     let heightElement = $("<p>" + "Height (dm): " + pokemon.height + "</p>");
@@ -120,22 +123,31 @@ let pokemonRepository = (function () {
     let typesElement = $("<p>" + "Types: " + typesToString + "</p>");
 
     // Classification Element
-    let classificationElement = $("<p>" + "Classification: " + getSizeClassification(pokemon.height) + "</p>");
+    let classificationElement = $(
+      "<p>" +
+        "Classification: " +
+        getSizeClassification(pokemon.height) +
+        "</p>"
+    );
 
-  //  Abilities
-  let abilitydetails = pokemon.abilities;
+    //  Abilities
+    let abilitydetails = pokemon.abilities;
     let abilitiesToString = "";
     abilitydetails.forEach(function (abilitiesdetails) {
-      abilitiesToString = abilitiesToString + " - " + abilitiesdetails.ability.name;
+      abilitiesToString =
+        abilitiesToString + " - " + abilitiesdetails.ability.name;
     });
-  let abilitiesElement  = $("<p>" + "Abilities: " + abilitiesToString + "</p>");
-   
-    // Image
-    let imageElement = $(`<img class = "modal-img img-fluid" style = "width: 50%">`);
-    imageElement.attr("src", pokemon.imageUrl);
-    imageElement.attr("alt", ("Picture of the Pokémon " + pokemon.name));
-    imageElement.attr("title", ("Picture of the Pokémon " + pokemon.name));
+    let abilitiesElement = $(
+      "<p>" + "Abilities: " + abilitiesToString + "</p>"
+    );
 
+    // Image
+    let imageElement = $(
+      `<img class = "modal-img img-fluid" style = "width: 50%">`
+    );
+    imageElement.attr("src", pokemon.imageUrl);
+    imageElement.attr("alt", "Picture of the Pokémon " + pokemon.name);
+    imageElement.attr("title", "Picture of the Pokémon " + pokemon.name);
 
     // Append to modal body
     modalTitle.append(nameElement);
@@ -144,7 +156,6 @@ let pokemonRepository = (function () {
     modalBody.append(typesElement);
     modalBody.append(classificationElement);
     modalBody.append(abilitiesElement);
-    
   }
 
   return {
@@ -208,11 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loop through array to put the information in a table
     pokemonsToShow.forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
-    })
-    
+    });
+
     pokemonRepository.hideLoadingMessage();
   }
-  
+
   document
     .getElementById("pokemonsChoice")
     .addEventListener("change", updateTable);
