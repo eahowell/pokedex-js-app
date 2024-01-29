@@ -1,0 +1,120 @@
+.page-container {
+    margin-top: 225px;
+}
+
+body {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+header {
+    color: #e928bd;
+    background: #0a1464;
+    background: linear-gradient(180deg, #edc655 0%, #fcffad 50%, white 100%);
+}
+
+#HeaderLogoImage {
+    height: 95px;
+    margin: 15px 5px 5px 15px;
+    padding: 0;
+    justify-content: center;
+}
+
+.formFilterPokemon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+select {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px 5px;
+    text-transform: capitalize;
+}
+
+.form-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    width: 200px;
+}
+
+.pokemon-list {
+    align-items: center;
+}
+
+.pokemonListButton {
+    width: 250px;
+    background-color: #ed55644f;
+    text-transform: capitalize;
+}
+
+.listItem {
+    list-style-type: none;
+}
+
+.visible {
+    visibility: visible;
+}
+.invisible {
+    visibility: hidden;
+}
+
+.modal-image {
+    float: left;
+    margin: auto auto auto 50px;
+    scale: 150%;
+}
+
+.modal h1 {
+    text-transform: capitalize;
+}
+
+.modal p {
+    text-transform: capitalize;
+}
+
+button {
+    text-transform: capitalize;
+}
+
+.nav-item {
+    padding-left: 25px;
+    margin-left: 35px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* For smaller displays */
+@media all and (max-width: 430px) {
+    .modal-image {
+        margin: auto auto auto 10px;
+        /* scale: 100%; */
+    }
+
+    .modal-details {
+        margin: 10px;
+    }
+}

@@ -171,6 +171,7 @@ let pokemonRepository = (function () {
 
 // Load Pokemon list from API
 pokemonRepository.loadList().then(function () {
+  sortPokemonsAlphabetically();
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
     // Populate dropdown to filter
@@ -181,6 +182,24 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.hideLoadingMessage();
   });
 });
+
+function sortPokemonsAlphabetically() {
+  pokemonRepository.showLoadingMessage();
+  const sortedPokemonList = pokemonRepository.getAll().sort((a, b) => a.name.localeCompare(b.name));
+  pokemonRepository.hideLoadingMessage();
+  
+  // Update the displayed list with the sorted data
+  let pokemonULList = document.querySelector(".pokemon-list");
+  // Clear list before refresh
+  while (pokemonULList.firstChild) {
+    pokemonULList.removeChild(pokemonULList.firstChild);
+  }
+
+  // Loop through the sorted array to put the information in a table
+  sortedPokemonList.forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+};
 
 // Compare two arrays
 function compareArrays(array1, array2) {
@@ -208,7 +227,6 @@ document.addEventListener("DOMContentLoaded", function () {
     while (pokemonULList.firstChild) {
       pokemonULList.removeChild(pokemonULList.firstChild);
     }
-
     let pokemonsToShow =
       choice === "All"
         ? pokemonRepository.getAll()
