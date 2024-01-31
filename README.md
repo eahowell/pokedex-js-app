@@ -4,11 +4,16 @@
 ![GitHub forks](https://img.shields.io/github/forks/eahowell/pokedex-js-app)
 ![GitHub watchers](https://img.shields.io/github/watchers/eahowell/pokedex-js-app)
 
+![Pokédex Logo](img/PokedexLogo.png)
+
 ## Project Description
 - To build a small web application with HTML, CSS, and JavaScript that loads data from an external API and enables the viewing of data points in detail.
 - There is a list of Pokémon, when clicked upon the details of the selected Pokémon will appear in a popup
+- [Project Brief](https://images.careerfoundry.com/public/courses/fullstack-immersion/Full-Stack+Immersion+A1+Project+Brief.pdf)
 
 ## How to Run:
+- [Run App Here](https://eahowell.github.io/pokedex-js-app/#) 
+    --OR--
 - Download the repo files and open the index.html
 
 ## Project Dependencies
